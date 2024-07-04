@@ -3,8 +3,11 @@ const db = require('./db')
 const Tasks = require('./models/tasks')
 const doneTasks = require('./models/doneTasks')
 const todo = express();
+const cors = require('cors');
 
 todo.use(express.json());
+
+todo.use(cors());
 
 todo.get('/tasks' , async (req , res) => {
     const tasts = await Tasks.find({});
@@ -61,6 +64,6 @@ todo.post('/done/:id' , async (req , res) => {
 
 todo.get('/tasks')
 
-todo.listen(3000 , () => {
-    console.log('todoList running on 3000');
+todo.listen(8080 , () => {
+    console.log('todoList running on 8080');
 })
